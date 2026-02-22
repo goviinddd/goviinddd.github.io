@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Govind Krishna C | [cite_start]Robotics & AI [cite: 3]</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #1f6feb;
+            --border: #30363d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Hero Section */
+        header {
+            padding: 100px 0 50px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .contact-links a {
+            color: var(--accent);
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: 500;
+        }
+
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .card .date {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Skills Tag Cloud */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--accent);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .subtitle { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            [cite_start]<h1>Govind Krishna C [cite: 3]</h1>
+            [cite_start]<div class="subtitle">Robotics & Automation Engineer [cite: 3]</div>
+            <p style="margin-bottom: 25px; max-width: 800px;">
+                Dynamic and results-driven student at Saintgits College of Engineering, adept in Python and embedded systems. [cite_start]Currently working on integrating various machine learning models and applying them in real-world scenarios. [cite: 4]
+            </p>
+            <div class="contact-links">
+                [cite_start]<a href="mailto:gkc.rbb2327@saintgits.org">Email [cite: 3]</a>
+                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+            </div>
+        </header>
+
+        <section id="skills">
+            [cite_start]<h2>Technical Skills [cite: 4]</h2>
+            <div class="skills-container">
+                [cite_start]<span class="skill-tag">Python [cite: 4]</span>
+                [cite_start]<span class="skill-tag">C++ [cite: 4]</span>
+                [cite_start]<span class="skill-tag">ROS2 [cite: 4]</span>
+                [cite_start]<span class="skill-tag">Isaac Sim [cite: 4]</span>
+                [cite_start]<span class="skill-tag">OpenCV [cite: 4]</span>
+                [cite_start]<span class="skill-tag">PyTorch [cite: 4]</span>
+                [cite_start]<span class="skill-tag">NVIDIA Jetson [cite: 4]</span>
+                [cite_start]<span class="skill-tag">Samsung NPU [cite: 4]</span>
+                [cite_start]<span class="skill-tag">ESP32 / IoT [cite: 4]</span>
+            </div>
+        </section>
+
+        <section id="projects">
+            [cite_start]<h2>Featured Projects [cite: 4]</h2>
+            <div class="grid">
+                <div class="card">
+                    [cite_start]<h3>Smartphone-Based Autonomous Navigation [cite: 4]</h3>
+                    <p>Developed a system for autonomous car navigation using a Samsung smartphone NPU, eliminating the need for costly external processors. [cite_start]Optimized lane following, obstacle detection, and traffic cues across CPU, GPU, and NPU to prevent thermal throttling. [cite: 4]</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Pothole Detection and Mapping</h3>
+                    <p>Built a YOLO-based detection model integrated with GPS to identify potholes in real-time and log their coordinates automatically to a Firebase database for mapping.</p>
+                </div>
+
+                <div class="card">
+                    [cite_start]<h3>Interactive Offline Learning Assistant [cite: 4]</h3>
+                    <p>Developed an interactive, multimodal, offline learning assistant for classrooms integrating text, voice, and document compatibility. [cite_start]Optimized for low-end systems using Intel’s OpenVINO. [cite: 4]</p>
+                </div>
+
+                <div class="card">
+                    [cite_start]<h3>IoT Campus Monitoring [cite: 4]</h3>
+                    <p>Collaborated on an IoT pipeline communicating between campus sensor nodes. [cite_start]Built an online web dashboard to visualize the real-time data for the Taiwan-India Smart Cities Project. [cite: 4]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            [cite_start]<h2>Experience [cite: 4]</h2>
+            <div class="grid">
+                <div class="card">
+                    [cite_start]<h3>AI Developer Intern [cite: 4]</h3>
+                    [cite_start]<span class="date">AT Bots [cite: 4]</span>
+                    [cite_start]<p>Focused on the creation, integration, and deployment of a full-stack AI model (TTS, LLM, STT) onto an NVIDIA Orin Nano board. [cite: 4]</p>
+                </div>
+
+                <div class="card">
+                    [cite_start]<h3>Python/ML Intern [cite: 4]</h3>
+                    [cite_start]<span class="date">Innovizsta Technologies [cite: 4]</span>
+                    <p>Converted and integrated AI models like YOLOv8n and MiDas2 to run efficiently on Android NPUs. [cite_start]Trained RL models for lane following using NVIDIA Isaac Sim. [cite: 4]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" style="border-bottom: none;">
+            [cite_start]<h2>Education [cite: 3]</h2>
+            <div class="card">
+                [cite_start]<h3>Saintgits College of Engineering (Autonomous) [cite: 1]</h3>
+                <span class="date">B.Tech in Robotics and Automation | [cite_start]Expected July 2027 [cite: 3]</span>
+                [cite_start]<p>Current CGPA: 9.09 [cite: 3]</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Govind Krishna C. Built for the future of Robotics.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
