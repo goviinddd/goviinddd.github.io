@@ -18,7 +18,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
         
-        /* Fixed Navigation Bar Proportions */
+        /* Navigation Bar */
         nav {
             background-color: #0b1120;
             border-bottom: 2px solid var(--border);
@@ -43,27 +43,64 @@
         .container { max-width: 900px; margin: 50px auto; padding: 0 20px; }
         .section-title { font-size: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 30px; }
 
+        /* Accordion Styling */
         .log-entry {
             background-color: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 6px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .log-entry:hover {
+            border-color: var(--accent);
         }
 
         .log-header {
             background-color: rgba(0,0,0,0.3);
-            padding: 15px 25px;
-            border-bottom: 1px solid var(--border);
+            padding: 18px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
+            list-style: none; /* Removes default HTML arrow */
+        }
+        
+        /* Removes default arrow in Safari/Chrome */
+        .log-header::-webkit-details-marker { display: none; }
+
+        .log-header h3 { color: var(--accent); font-family: monospace; font-size: 1.2rem; margin: 0; }
+
+        /* Custom Dropdown Arrow */
+        .log-header::after {
+            content: '▼';
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
         }
 
-        .log-header h3 { color: var(--accent); font-family: monospace; font-size: 1.2rem; }
-        .log-status { font-family: monospace; color: #4ade80; }
+        /* Rotates arrow when expanded */
+        details[open] .log-header::after {
+            transform: rotate(180deg);
+        }
 
-        .log-body { padding: 25px; }
+        /* Adds a bottom border to header only when open */
+        details[open] .log-header {
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Smooth fade-in for content */
+        .log-body { 
+            padding: 25px; 
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .log-body p { color: var(--text-muted); margin-bottom: 15px; }
         
         .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
@@ -88,11 +125,10 @@
     <div class="container">
         <h2 class="section-title">Personal Projects</h2>
 
-        <div class="log-entry">
-            <div class="log-header">
+        <details class="log-entry">
+            <summary class="log-header">
                 <h3>1. Smartphone-Based Autonomous Navigation</h3>
-                <span class="log-status">[STATUS: DEPLOYED]</span>
-            </div>
+            </summary>
             <div class="log-body">
                 <p>Engineered a robust system to achieve full autonomous vehicle navigation utilizing exclusively a smartphone processing unit, eliminating the dependency on costly external processors like NVIDIA Jetsons.</p>
                 <p>Successfully managed thermal throttling by strategically distributing the memory load of four concurrent AI models (handling lane following, obstacle detection, and traffic cues) across the device's CPU, GPU, and NPU.</p>
@@ -102,13 +138,12 @@
                     <span class="tech-tag">Edge AI</span>
                 </div>
             </div>
-        </div>
+        </details>
 
-        <div class="log-entry">
-            <div class="log-header">
+        <details class="log-entry">
+            <summary class="log-header">
                 <h3>2. Pothole Detection & Mapping System</h3>
-                <span class="log-status">[STATUS: ACTIVE]</span>
-            </div>
+            </summary>
             <div class="log-body">
                 <p>Developed a real-time computer vision model designed to identify infrastructure damage (potholes) on roads.</p>
                 <p>Integrated the vision system with GPS hardware to automatically log physical coordinates to a cloud database, enabling live mapping of road hazards.</p>
@@ -118,13 +153,12 @@
                     <span class="tech-tag">Python</span>
                 </div>
             </div>
-        </div>
+        </details>
 
-        <div class="log-entry">
-            <div class="log-header">
+        <details class="log-entry">
+            <summary class="log-header">
                 <h3>3. IoT Weather Station Node</h3>
-                <span class="log-status">[STATUS: COMPLETE]</span>
-            </div>
+            </summary>
             <div class="log-body">
                 <p>Constructed an environmental monitoring hardware node capable of reading and transmitting localized climate data.</p>
                 <p>Interfaced rain sensors and AHT10 temperature/humidity sensors with a microcontroller to establish a reliable data pipeline.</p>
@@ -134,13 +168,12 @@
                     <span class="tech-tag">C/C++</span>
                 </div>
             </div>
-        </div>
+        </details>
 
-        <div class="log-entry">
-            <div class="log-header">
+        <details class="log-entry">
+            <summary class="log-header">
                 <h3>4. Receipt Data Extractor Pipeline</h3>
-                <span class="log-status">[STATUS: COMPLETE]</span>
-            </div>
+            </summary>
             <div class="log-body">
                 <p>Created an automated tool to ingest raw receipt images and output structured, machine-readable data.</p>
                 <p>Utilized object detection models to isolate text regions and leveraged Large Language Models for context-aware information processing and categorization.</p>
@@ -150,7 +183,7 @@
                     <span class="tech-tag">Python</span>
                 </div>
             </div>
-        </div>
+        </details>
 
     </div>
 
