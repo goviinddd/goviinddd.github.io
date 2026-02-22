@@ -140,6 +140,26 @@
             padding: 5px 12px; border-radius: 4px; font-size: 0.85rem;
             font-family: monospace; border: 1px solid var(--border);
         }
+        /* =========================================
+           MOBILE RESPONSIVENESS FIXES
+           ========================================= */
+        @media (max-width: 768px) {
+            /* Fix Navigation */
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-logo { height: 50px; }
+            .nav-links a { margin: 0; font-size: 0.95rem; }
+
+            /* Fix Accordion Logs */
+            .log-header { padding: 15px; flex-direction: column; align-items: flex-start; gap: 10px; }
+            .log-header h3 { font-size: 1.1rem; line-height: 1.4; }
+            
+            /* Reposition the dropdown arrow for mobile */
+            .log-header::after { position: absolute; right: 20px; top: 20px; }
+            .log-entry { position: relative; }
+            
+            .log-body { padding: 15px; }
+            .section-title { font-size: 1.6rem; margin-top: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -221,6 +241,22 @@
                     <span class="tech-tag">YOLO</span>
                     <span class="tech-tag">Gemini/Llama API</span>
                     <span class="tech-tag">Python</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="log-entry">
+            <summary class="log-header">
+                <h3>5. Hazard Reporting App</h3>
+            </summary>
+            <div class="log-body">
+                <p>Engineered a comprehensive hazard reporting platform featuring a dual-interface system. Citizens can log live incidents (like potholes or fallen trees) via a camera interface, while authorities utilize a real-time dashboard and Situation Map for task management and navigation.</p>
+                <p>Integrated advanced safety and routing logic using OpenStreetMap and OSRM to dynamically alert nearby users of active hazards and automatically calculate detour routes to circumvent incident areas.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Android (Java)</span>
+                    <span class="tech-tag">Python (YOLOv8)</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">OpenStreetMap</span>
                 </div>
             </div>
         </details>

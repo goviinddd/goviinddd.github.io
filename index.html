@@ -160,7 +160,38 @@
         .cert-card { background-color: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
         .cert-card h4 { color: var(--text-main); margin-bottom: 5px; font-size: 1.1rem; }
         .cert-card span { color: var(--text-muted); font-size: 0.9rem; }
+        /* =========================================
+           MOBILE RESPONSIVENESS FIXES
+           ========================================= */
+        @media (max-width: 768px) {
+            /* Fix Navigation */
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-logo { height: 50px; }
+            .nav-links a { margin: 0 10px; font-size: 0.95rem; }
 
+            /* Fix Hero & Image */
+            .hero { flex-direction: column-reverse; text-align: center; gap: 20px; margin-top: 20px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .hero-image img { width: 160px; height: 160px; }
+
+            /* Shrink Skills Marquee */
+            .skill-tag { padding: 10px 20px; font-size: 1rem; }
+
+            /* Fix Experience Slider Squishing */
+            .experience-slider-wrapper { display: flex; flex-direction: column; position: relative; }
+            .experience-card { padding: 20px; border-left: none; border-top: 4px solid var(--accent); border-radius: 8px; }
+            .slide-container { width: 100%; min-height: 380px; }
+            
+            /* Move slider buttons to the bottom center */
+            .slider-btn { position: absolute; bottom: -10px; width: 40px; height: 40px; font-size: 1.2rem; z-index: 10; }
+            .slider-btn:first-child { left: 35%; }
+            .slider-btn:last-child { right: 35%; }
+
+            /* Adjust Container padding */
+            .container { margin: 30px auto; }
+            .section-title { font-size: 1.6rem; margin-top: 40px; }
+        }
     </style>
 </head>
 <body>
@@ -228,6 +259,10 @@
             <div class="carousel-card">
                 <h3>4. Receipt Data Extractor</h3>
                 <p>Created a tool to extract structured data from receipts using YOLO for detection and Gemini for processing.</p>
+            </div>
+            <div class="carousel-card">
+                <h3>5. Hazard Reporting App</h3>
+                <p>Developed a dual-interface Android app for citizens and authorities to report and manage urban hazards. Integrated YOLOv8, Firebase, and OpenStreetMap for live detour routing and alerting.</p>
             </div>
         </div>
         <div class="btn-container">
