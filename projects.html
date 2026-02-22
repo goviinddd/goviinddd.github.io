@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Govind Krishna C | Project Logs</title>
+    <style>
+        :root {
+            --bg: #0f172a; 
+            --bg-card: #1e293b;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #fcd34d; 
+            --border: #334155;
+            --code-bg: #000000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
+        
+        /* Navigation Bar (Same as index.html) */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: #0b1120;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-logo { height: 50px; width: auto; border-radius: 4px; }
+        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 30px; font-weight: 600; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+        /* Container */
+        .container { max-width: 900px; margin: 50px auto; padding: 0 20px; }
+        .section-title { font-size: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 30px; }
+
+        /* Project Logs Styling */
+        .log-entry {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .log-header {
+            background-color: rgba(0,0,0,0.3);
+            padding: 15px 25px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .log-header h3 { color: var(--accent); font-family: monospace; font-size: 1.3rem; }
+        .log-status { font-family: monospace; color: #4ade80; /* green status */ }
+
+        .log-body { padding: 25px; }
+        .log-body p { color: var(--text-muted); margin-bottom: 15px; }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .tech-tag {
+            background-color: var(--code-bg);
+            color: var(--text-main);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-family: monospace;
+            border: 1px solid var(--border);
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="mylogo.jpg" alt="Govind Engineer Logo" class="nav-logo">
+        <div class="nav-links">
+            <a href="index.html">Home & Experience</a>
+            <a href="projects.html" class="active">Project Logs</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="section-title">Engineering Logs</h2>
+
+        <div class="log-entry">
+            <div class="log-header">
+                <h3>> LOG_001: Smartphone-Based Autonomous Navigation</h3>
+                <span class="log-status">[STATUS: DEPLOYED]</span>
+            </div>
+            <div class="log-body">
+                <p>Engineered a robust system to achieve full autonomous vehicle navigation utilizing exclusively a smartphone processing unit, eliminating the dependency on costly external processors like NVIDIA Jetsons.</p>
+                <p>Successfully managed thermal throttling by strategically distributing the memory load of four concurrent AI models (handling lane following, obstacle detection, and traffic cues) across the device's CPU, GPU, and NPU.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Samsung NPU</span>
+                    <span class="tech-tag">C++</span>
+                    <span class="tech-tag">Edge AI</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="log-entry">
+            <div class="log-header">
+                <h3>> LOG_002: Pothole Detection & Mapping System</h3>
+                <span class="log-status">[STATUS: ACTIVE]</span>
+            </div>
+            <div class="log-body">
+                <p>Developed a real-time computer vision model designed to identify infrastructure damage (potholes) on roads.</p>
+                <p>Integrated the vision system with GPS hardware to automatically log physical coordinates to a cloud database, enabling live mapping of road hazards.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">YOLO</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Python</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="log-entry">
+            <div class="log-header">
+                <h3>> LOG_003: IoT Weather Station Node</h3>
+                <span class="log-status">[STATUS: COMPLETE]</span>
+            </div>
+            <div class="log-body">
+                <p>Constructed an environmental monitoring hardware node capable of reading and transmitting localized climate data.</p>
+                <p>Interfaced rain sensors and AHT10 temperature/humidity sensors with a microcontroller to establish a reliable data pipeline.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">ESP32 / NodeMCU</span>
+                    <span class="tech-tag">AHT10 Sensor</span>
+                    <span class="tech-tag">C/C++</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="log-entry">
+            <div class="log-header">
+                <h3>> LOG_004: Receipt Data Extractor pipeline</h3>
+                <span class="log-status">[STATUS: COMPLETE]</span>
+            </div>
+            <div class="log-body">
+                <p>Created an automated tool to ingest raw receipt images and output structured, machine-readable data.</p>
+                <p>Utilized object detection models to isolate text regions and leveraged Large Language Models for context-aware information processing and categorization.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">YOLO</span>
+                    <span class="tech-tag">Gemini API</span>
+                    <span class="tech-tag">Python</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
