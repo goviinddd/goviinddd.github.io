@@ -16,8 +16,28 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
-        
+        body { background-color: transparent; color: var(--text-main); line-height: 1.6; }
+        /* --- VIDEO BACKGROUND STYLES --- */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover; /* Ensures the video covers the screen without stretching */
+            z-index: -2; /* Pushes the video all the way to the back */
+        }
+
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            /* This is your dark blue background color, but at 85% opacity */
+            background-color: rgba(15, 23, 42, 0.85); 
+            z-index: -1; /* Puts the tint over the video, but behind your text */
+        }
         /* Navigation Bar */
         /* Navigation Bar */
         nav {
