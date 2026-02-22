@@ -3,193 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Govind Krishna C | Robotics & AI</title>
+    <title>Govind Krishna C | Home</title>
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --text-main: #c9d1d9;
-            --text-muted: #8b949e;
-            --accent: #58a6ff;
-            --border: #30363d;
+            --bg: #0f172a; 
+            --bg-card: #1e293b;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #fcd34d; 
+            --border: #334155;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-
-        /* Header */
-        header { padding: 100px 0 50px; border-bottom: 1px solid var(--border); }
-        h1 { font-size: 3.5rem; color: #ffffff; margin-bottom: 10px; }
-        .subtitle { font-size: 1.5rem; color: var(--text-muted); margin-bottom: 20px; }
-        .contact-links a { color: var(--accent); text-decoration: none; margin-right: 15px; font-weight: bold; }
-        .contact-links a:hover { text-decoration: underline; }
-
-        section { padding: 60px 0; border-bottom: 1px solid var(--border); }
-        section h2 { font-size: 2rem; color: #ffffff; margin-bottom: 30px; }
-
-        /* --- SKILLS SLIDING MARQUEE --- */
-        .marquee-wrapper {
-            overflow: hidden;
-            white-space: nowrap;
-            width: 100%;
-            position: relative;
-        }
-        /* Gradient fades on the edges for a sleek look */
-        .marquee-wrapper::before, .marquee-wrapper::after {
-            content: "";
-            position: absolute;
-            top: 0; width: 50px; height: 100%;
-            z-index: 2;
-        }
-        .marquee-wrapper::before { left: 0; background: linear-gradient(to right, var(--bg-color), transparent); }
-        .marquee-wrapper::after { right: 0; background: linear-gradient(to left, var(--bg-color), transparent); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
         
-        .marquee-content {
-            display: inline-block;
-            animation: scroll 20s linear infinite;
+        /* Fixed Navigation Bar Proportions */
+        nav {
+            background-color: #0b1120;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px; /* This keeps the logo and links from flying to the screen edges */
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .nav-logo {
+            height: 70px; /* Increased size */
+            width: auto;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        .container { max-width: 900px; margin: 50px auto; padding: 0 20px; }
+        .section-title { font-size: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 30px; margin-top: 60px; }
+
+        .hero { margin-bottom: 60px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        .hero .highlight { color: var(--accent); }
+        .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; }
+
+        /* BIGGER Sliding Skills Marquee */
+        .marquee-wrapper {
+            overflow: hidden; white-space: nowrap; width: 100%; position: relative;
+            padding: 20px 0; margin-bottom: 40px;
+        }
+        .marquee-wrapper::before, .marquee-wrapper::after {
+            content: ""; position: absolute; top: 0; width: 80px; height: 100%; z-index: 2;
+        }
+        .marquee-wrapper::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+        .marquee-wrapper::after { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+        
+        .marquee-content { display: inline-block; animation: scroll 25s linear infinite; }
+        
         .skill-tag {
-            background-color: rgba(88, 166, 255, 0.1);
+            background-color: rgba(252, 211, 77, 0.1);
             color: var(--accent);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 1rem;
-            border: 1px solid rgba(88, 166, 255, 0.2);
-            margin: 0 10px;
+            padding: 15px 35px; /* Much bigger padding */
+            border-radius: 40px;
+            font-size: 1.4rem; /* Much bigger text */
+            font-weight: bold;
+            border: 1px solid rgba(252, 211, 77, 0.3);
+            margin: 0 15px;
             display: inline-block;
         }
+
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* --- PROJECTS SLIDING CAROUSEL --- */
-        .carousel {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 20px;
-            padding-bottom: 20px; /* Space for scrollbar */
-            scroll-behavior: smooth;
+        /* Experience Cards */
+        .experience-card {
+            background-color: var(--bg-card); border-left: 4px solid var(--accent);
+            padding: 25px; margin-bottom: 20px; border-radius: 0 8px 8px 0;
         }
-        /* Custom styled scrollbar for the carousel */
-        .carousel::-webkit-scrollbar { height: 8px; }
-        .carousel::-webkit-scrollbar-track { background: var(--bg-color); }
+        .experience-card h3 { font-size: 1.4rem; margin-bottom: 5px; }
+        .experience-card .company { color: var(--accent); font-weight: bold; margin-bottom: 15px; display: block; }
+        .experience-card ul { margin-left: 20px; color: var(--text-muted); }
+        .experience-card li { margin-bottom: 8px; }
+
+        /* Projects Carousel */
+        .carousel {
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+            gap: 20px; padding-bottom: 20px; scroll-behavior: smooth;
+        }
+        .carousel::-webkit-scrollbar { height: 10px; }
+        .carousel::-webkit-scrollbar-track { background: var(--bg); border-radius: 10px; }
         .carousel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
         .carousel::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
         .carousel-card {
-            flex: 0 0 80%; /* Card takes up 80% of width so the next one peeks in */
-            scroll-snap-align: center;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 30px;
-            transition: transform 0.3s, border-color 0.3s;
+            flex: 0 0 85%; scroll-snap-align: center;
+            background-color: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 30px; transition: transform 0.3s, border-color 0.3s;
         }
-        @media (min-width: 768px) {
-            .carousel-card { flex: 0 0 45%; scroll-snap-align: start; }
-        }
+        @media (min-width: 768px) { .carousel-card { flex: 0 0 45%; scroll-snap-align: start; } }
         .carousel-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .carousel-card h3 { color: var(--accent); margin-bottom: 10px; }
+        .carousel-card h3 { color: var(--accent); margin-bottom: 15px; font-size: 1.2rem; }
+        
+        /* Call to Action Button */
+        .btn-container { text-align: center; margin-top: 20px; }
+        .btn {
+            display: inline-block; background-color: var(--accent); color: #000;
+            padding: 12px 30px; border-radius: 30px; text-decoration: none;
+            font-weight: bold; font-size: 1.1rem; transition: background 0.3s, transform 0.2s;
+        }
+        .btn:hover { background-color: #fde68a; transform: scale(1.05); }
 
-        /* Standard Grid for Experience */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 25px; }
-        .card h3 { color: var(--accent); margin-bottom: 10px; }
-        .date { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px; display: block; }
+        /* Certifications Grid */
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .cert-card { background-color: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
+        .cert-card h4 { color: var(--text-main); margin-bottom: 5px; font-size: 1.1rem; }
+        .cert-card span { color: var(--text-muted); font-size: 0.9rem; }
 
-        footer { text-align: center; padding: 40px 0; color: var(--text-muted); }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Govind Krishna C</h1>
-            [cite_start]<div class="subtitle">Robotics & Automation Engineer [cite: 3]</div>
-            <p style="margin-bottom: 25px; max-width: 800px;">
-                [cite_start]Dynamic and results-driven student at Saintgits College of Engineering, adept in Python and embedded systems[cite: 4]. [cite_start]Currently working on integrating various machine learning models and applying them in real-world scenarios[cite: 4].
-            </p>
-            <div class="contact-links">
-                <a href="mailto:gkc.rbb2327@saintgits.org">Email</a>
+    <nav>
+        <div class="nav-container">
+            <img src="mylogo.png" alt="Govind Engineer Logo" class="nav-logo">
+            <div class="nav-links">
                 <a href="#">GitHub</a>
                 <a href="#">LinkedIn</a>
             </div>
-        </header>
+        </div>
+    </nav>
 
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <div class="marquee-wrapper">
-                <div class="marquee-content">
-                    [cite_start]<span class="skill-tag">Python [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">C++ [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">ROS2 [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">Isaac Sim [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">OpenCV [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">PyTorch [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">NVIDIA Jetson [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">Samsung NPU [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">ESP32 / IoT [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">Python [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">C++ [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">ROS2 [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">Isaac Sim [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">OpenCV [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">PyTorch [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">NVIDIA Jetson [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">Samsung NPU [cite: 4]</span>
-                    [cite_start]<span class="skill-tag">ESP32 / IoT [cite: 4]</span>
-                </div>
+    <div class="container">
+        <div class="hero">
+            <h1>Govind Krishna C</h1>
+            <h2 class="highlight">Robotics & Automation Engineer</h2>
+            <br>
+            <p>B.Tech student at Saintgits College of Engineering. Specialized in bridging the gap between hardware and AI, from training RL models to deploying edge applications on NPUs and NVIDIA Jetsons.</p>
+        </div>
+
+        <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">ROS2</span>
+                <span class="skill-tag">Isaac Sim</span>
+                <span class="skill-tag">OpenCV</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">NVIDIA Jetson</span>
+                <span class="skill-tag">Samsung NPU</span>
+                <span class="skill-tag">ESP32</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">ROS2</span>
+                <span class="skill-tag">Isaac Sim</span>
+                <span class="skill-tag">OpenCV</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">NVIDIA Jetson</span>
+                <span class="skill-tag">Samsung NPU</span>
+                <span class="skill-tag">ESP32</span>
             </div>
-        </section>
+        </div>
 
-        <section id="projects">
-            <h2>Featured Projects (Swipe/Scroll Right)</h2>
-            <div class="carousel">
-                <div class="carousel-card">
-                    <h3>Smartphone-Based Autonomous Navigation</h3>
-                    [cite_start]<p>Built a system to achieve full autonomous navigation using only a smartphone, avoiding costly external processors[cite: 4]. [cite_start]Optimized four models (lane following, obstacle detection, traffic cues) by distributing memory load across the CPU, GPU, and NPU[cite: 4].</p>
-                </div>
-                
-                <div class="carousel-card">
-                    <h3>Pothole Detection and Mapping</h3>
-                    <p>Developed a YOLO-based detection model to identify potholes and log their GPS coordinates to a Firebase database.</p>
-                </div>
-
-                <div class="carousel-card">
-                    <h3>IoT Weather Station</h3>
-                    <p>Built a monitoring node using ESP32/NodeMCU with rain and temperature/humidity sensors (AHT10).</p>
-                </div>
-
-                <div class="carousel-card">
-                    <h3>IoT Campus Monitoring</h3>
-                    [cite_start]<p>Collaborated on the development of an IoT pipeline for communication between sensor nodes placed around the campus[cite: 4]. [cite_start]Developed an online web dashboard to visualize real-time data from the campus monitoring nodes[cite: 4].</p>
-                </div>
+        <h2 class="section-title">Personal Projects</h2>
+        <div class="carousel">
+            <div class="carousel-card">
+                <h3>1. Smartphone-Based Autonomous Navigation</h3>
+                <p>Built a system to achieve full autonomous navigation using only a smartphone, avoiding costly external processors. Optimized models across CPU, GPU, and NPU.</p>
             </div>
-        </section>
-
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>AI Developer Intern</h3>
-                    [cite_start]<span class="date">AT Bots [cite: 4]</span>
-                    [cite_start]<p>Focused on the creation, integration, and deployment of a full-stack AI model (including a TTS, LLM and an STT) onto an Nvidia Orin Nano board[cite: 4].</p>
-                </div>
-
-                <div class="card">
-                    <h3>Python/ML Intern</h3>
-                    [cite_start]<span class="date">Innovizsta Technologies [cite: 4]</span>
-                    [cite_start]<p>Converted, integrated and optimised different AI models like YOLOV8n and MiDas2 to run efficiently on an Android phone using the NPU as a processor[cite: 4].</p>
-                </div>
+            <div class="carousel-card">
+                <h3>2. Pothole Detection and Mapping</h3>
+                <p>Developed a YOLO-based detection model to identify potholes and log their GPS coordinates to a Firebase database.</p>
             </div>
-        </section>
+            <div class="carousel-card">
+                <h3>3. IoT Weather Station</h3>
+                <p>Built a monitoring node using ESP32/NodeMCU with rain and AHT10 temperature/humidity sensors.</p>
+            </div>
+            <div class="carousel-card">
+                <h3>4. Receipt Data Extractor</h3>
+                <p>Created a tool to extract structured data from receipts using YOLO for detection and Gemini for processing.</p>
+            </div>
+        </div>
+        <div class="btn-container">
+            <a href="projects.html" class="btn">View Full Project Details</a>
+        </div>
 
-        <footer style="border-top: 1px solid var(--border); margin-top: 40px;">
-            <p>&copy; 2026 Govind Krishna C. Built for the future of Robotics.</p>
-        </footer>
+        <h2 class="section-title">Professional Experience</h2>
+
+        <div class="experience-card">
+            <h3>Robotics Developer Intern</h3>
+            <span class="company">AT Bots</span>
+            <ul>
+                <li>Engineered the creation, integration, and deployment of a full-stack AI model.</li>
+                <li>Deployed an integrated system featuring Text-to-Speech, LLM, and Speech-to-Text directly onto an NVIDIA Orin Nano edge board.</li>
+            </ul>
+        </div>
+
+        <div class="experience-card">
+            <h3>Python / ML Intern</h3>
+            <span class="company">Innovizsta Technologies</span>
+            <ul>
+                <li>Converted AI models (YOLOv8n, MiDas2) to execute efficiently on Android smartphone NPUs.</li>
+                <li>Trained Reinforcement Learning models for optimized lane following using NVIDIA Isaac Sim.</li>
+            </ul>
+        </div>
+
+        <div class="experience-card">
+            <h3>Program Intern</h3>
+            <span class="company">Intel Unnati Industrial Training</span>
+            <ul>
+                <li>Developed a multimodal, offline learning assistant integrating text, voice, and document compatibility.</li>
+                <li>Optimized high-performance inference on low-end systems utilizing Intel’s OpenVINO toolkit.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h4>OOP Using UML, Java and Patterns</h4>
+                <span>NPTEL</span>
+            </div>
+            <div class="cert-card">
+                <h4>Robotics & Industrial Automation</h4>
+                <span>Coursera</span>
+            </div>
+            <div class="cert-card">
+                <h4>Programming in Java</h4>
+                <span>NPTEL</span>
+            </div>
+            <div class="cert-card">
+                <h4>Fundamentals of Python Programming</h4>
+                <span>Saintgits</span>
+            </div>
+        </div>
+        <br><br>
     </div>
 
 </body>

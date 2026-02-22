@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Govind Krishna C | Project Logs</title>
+    <title>Govind Krishna C | Personal Projects</title>
     <style>
         :root {
             --bg: #0f172a; 
@@ -18,27 +18,31 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
         
-        /* Navigation Bar (Same as index.html) */
+        /* Fixed Navigation Bar Proportions */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 40px;
             background-color: #0b1120;
             border-bottom: 2px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-        .nav-logo { height: 50px; width: auto; border-radius: 4px; }
-        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 30px; font-weight: 600; transition: color 0.2s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
-        /* Container */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .nav-logo { height: 70px; width: auto; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+
         .container { max-width: 900px; margin: 50px auto; padding: 0 20px; }
         .section-title { font-size: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 30px; }
 
-        /* Project Logs Styling */
         .log-entry {
             background-color: var(--bg-card);
             border: 1px solid var(--border);
@@ -56,47 +60,37 @@
             align-items: center;
         }
 
-        .log-header h3 { color: var(--accent); font-family: monospace; font-size: 1.3rem; }
-        .log-status { font-family: monospace; color: #4ade80; /* green status */ }
+        .log-header h3 { color: var(--accent); font-family: monospace; font-size: 1.2rem; }
+        .log-status { font-family: monospace; color: #4ade80; }
 
         .log-body { padding: 25px; }
         .log-body p { color: var(--text-muted); margin-bottom: 15px; }
         
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
         .tech-tag {
-            background-color: var(--code-bg);
-            color: var(--text-main);
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-family: monospace;
-            border: 1px solid var(--border);
+            background-color: var(--code-bg); color: var(--text-main);
+            padding: 5px 12px; border-radius: 4px; font-size: 0.85rem;
+            font-family: monospace; border: 1px solid var(--border);
         }
-
     </style>
 </head>
 <body>
 
     <nav>
-        <img src="mylogo.jpg" alt="Govind Engineer Logo" class="nav-logo">
-        <div class="nav-links">
-            <a href="index.html">Home & Experience</a>
-            <a href="projects.html" class="active">Project Logs</a>
+        <div class="nav-container">
+            <img src="mylogo.jpg" alt="Govind Engineer Logo" class="nav-logo">
+            <div class="nav-links">
+                <a href="index.html">← Back to Home</a>
+            </div>
         </div>
     </nav>
 
     <div class="container">
-        <h2 class="section-title">Engineering Logs</h2>
+        <h2 class="section-title">Personal Projects</h2>
 
         <div class="log-entry">
             <div class="log-header">
-                <h3>> LOG_001: Smartphone-Based Autonomous Navigation</h3>
+                <h3>1. Smartphone-Based Autonomous Navigation</h3>
                 <span class="log-status">[STATUS: DEPLOYED]</span>
             </div>
             <div class="log-body">
@@ -112,7 +106,7 @@
 
         <div class="log-entry">
             <div class="log-header">
-                <h3>> LOG_002: Pothole Detection & Mapping System</h3>
+                <h3>2. Pothole Detection & Mapping System</h3>
                 <span class="log-status">[STATUS: ACTIVE]</span>
             </div>
             <div class="log-body">
@@ -128,7 +122,7 @@
 
         <div class="log-entry">
             <div class="log-header">
-                <h3>> LOG_003: IoT Weather Station Node</h3>
+                <h3>3. IoT Weather Station Node</h3>
                 <span class="log-status">[STATUS: COMPLETE]</span>
             </div>
             <div class="log-body">
@@ -144,7 +138,7 @@
 
         <div class="log-entry">
             <div class="log-header">
-                <h3>> LOG_004: Receipt Data Extractor pipeline</h3>
+                <h3>4. Receipt Data Extractor Pipeline</h3>
                 <span class="log-status">[STATUS: COMPLETE]</span>
             </div>
             <div class="log-body">
