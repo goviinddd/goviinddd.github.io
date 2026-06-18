@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Govind Krishna C | Home</title>
+    <style>
+        :root {
+            --bg: #0f172a; 
+            --bg-card: #1e293b;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #fcd34d; 
+            --border: #334155;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: transparent; color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        /* --- VIDEO BACKGROUND STYLES --- */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover; /* Ensures the video covers the screen without stretching */
+            z-index: -2; /* Pushes the video all the way to the back */
+        }
+
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            /* This is your dark blue background color, but at 85% opacity */
+            background-color: rgba(15, 23, 42, 0.85); 
+            z-index: -1; /* Puts the tint over the video, but behind your text */
+        }
+        /* Cream Navigation Bar */
+        nav {
+            background-color: #fcf9f2;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .nav-logo { height: 70px; width: auto; }
+        
+        .nav-links a { 
+            color: #0f172a; 
+            text-decoration: none; 
+            margin-left: 30px;
+            font-weight: 700; 
+            transition: color 0.2s; 
+        }
+        
+        .nav-links a:hover, .nav-links a.active { 
+            color: #d97706; 
+        }
+
+        .container { max-width: 900px; margin: 50px auto; padding: 0 20px; }
+        .section-title { font-size: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 30px; margin-top: 60px; }
+
+        .hero { margin-bottom: 60px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        .hero .highlight { color: var(--accent); }
+        .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; }
+        .hero-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            margin-top: 20px;
+        }
+
+        .hero-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 20px rgba(252, 211, 77, 0.2);
+            flex-shrink: 0;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 { 
+            font-size: 3rem; 
+            margin-bottom: 5px; 
+        }
+        
+        .hero-content .highlight { 
+            color: var(--accent); 
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p.bio { 
+            color: var(--text-muted); 
+            font-size: 1.1rem; 
+            max-width: 700px; 
+            margin-bottom: 20px;
+        }
+
+        .academic-info {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            max-width: 700px;
+        }
+
+        .academic-info p {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        
+        .academic-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Mobile Fixes for the new Hero layout */
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .academic-info {
+                text-align: left;
+                border-left: none;
+                border-top: 4px solid var(--accent);
+                border-radius: 8px;
+            }
+        }
+
+        /* Big Sliding Technical Skills */
+        .marquee-wrapper {
+            overflow: hidden; white-space: nowrap; width: 100%; position: relative;
+            padding: 20px 0; margin-bottom: 40px;
+        }
+        .marquee-wrapper::before, .marquee-wrapper::after {
+            content: ""; position: absolute; top: 0; width: 80px; height: 100%; z-index: 2;
+        }
+        .marquee-wrapper::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+        .marquee-wrapper::after { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+        
+        .marquee-content { display: inline-block; animation: scroll 25s linear infinite; }
+        
+        .skill-tag {
+            background-color: rgba(252, 211, 77, 0.1); color: var(--accent);
+            padding: 15px 35px; border-radius: 40px; font-size: 1.4rem; font-weight: bold;
+            border: 1px solid rgba(252, 211, 77, 0.3); margin: 0 15px; display: inline-block;
+        }
+
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* Projects Carousel */
+        .carousel {
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+            gap: 20px; padding-bottom: 20px; scroll-behavior: smooth;
+        }
+        .carousel::-webkit-scrollbar { height: 10px; }
+        .carousel::-webkit-scrollbar-track { background: var(--bg); border-radius: 10px; }
+        .carousel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        .carousel::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        .carousel-card {
+            flex: 0 0 85%; scroll-snap-align: center; background-color: var(--bg-card);
+            border: 1px solid var(--border); border-radius: 12px; padding: 30px; 
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        @media (min-width: 768px) { .carousel-card { flex: 0 0 45%; scroll-snap-align: start; } }
+        .carousel-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .carousel-card h3 { color: var(--accent); margin-bottom: 15px; font-size: 1.2rem; }
+        
+        .btn-container { text-align: center; margin-top: 20px; }
+        .btn {
+            display: inline-block; background-color: var(--accent); color: #000;
+            padding: 12px 30px; border-radius: 30px; text-decoration: none;
+            font-weight: bold; font-size: 1.1rem; transition: background 0.3s, transform 0.2s;
+        }
+        .btn:hover { background-color: #fde68a; transform: scale(1.05); }
+
+        /* --- EXPERIENCE SLIDER CSS --- */
+        .experience-slider-wrapper {
+            display: flex; align-items: center; gap: 15px;
+        }
+        .slider-btn {
+            background: var(--bg-card); color: var(--accent); border: 1px solid var(--border);
+            border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem;
+            cursor: pointer; flex-shrink: 0; transition: background 0.3s, color 0.3s;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .slider-btn:hover { background: var(--accent); color: #000; }
+        
+        .slide-container { flex-grow: 1; overflow: hidden; position: relative; min-height: 250px; }
+        .slide { display: none; animation: slideFade 0.4s ease-in-out; }
+        .slide.active { display: block; }
+        
+        @keyframes slideFade {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .experience-card {
+            background-color: var(--bg-card); border-left: 4px solid var(--accent);
+            padding: 30px; border-radius: 0 8px 8px 0; height: 100%;
+        }
+        .experience-card h3 { font-size: 1.4rem; margin-bottom: 5px; }
+        .experience-card .company { color: var(--accent); font-weight: bold; margin-bottom: 15px; display: block; }
+        .experience-card ul { margin-left: 20px; color: var(--text-muted); }
+        .experience-card li { margin-bottom: 8px; }
+
+        /* Certifications Grid */
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .cert-card { background-color: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
+        .cert-card h4 { color: var(--text-main); margin-bottom: 5px; font-size: 1.1rem; }
+        .cert-card span { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* --- CERTIFICATE MODAL STYLES --- */
+        .cert-card {
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .modal-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.9); /* Dark semi-transparent background */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 85%;
+            max-width: 900px;
+            height: 85%;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+            padding: 40px 20px 20px 20px; /* Space at top for close button */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            color: var(--text-main);
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 1001;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover { 
+            color: var(--accent); 
+        }
+
+        .modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 4px;
+            background-color: #fff; /* White background for transparent images/PDFs */
+        }
+        /* =========================================
+           MOBILE RESPONSIVENESS FIXES
+           ========================================= */
+        @media (max-width: 768px) {
+            /* Fix Navigation */
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-logo { height: 50px; }
+            .nav-links a { margin: 0 10px; font-size: 0.95rem; }
+
+            /* Fix Hero & Image */
+            .hero { flex-direction: column-reverse; text-align: center; gap: 20px; margin-top: 20px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .hero-image img { width: 160px; height: 160px; }
+
+            /* Shrink Skills Marquee */
+            .skill-tag { padding: 10px 20px; font-size: 1rem; }
+
+            /* Fix Experience Slider Squishing */
+            .experience-slider-wrapper { display: flex; flex-direction: column; position: relative; }
+            .experience-card { padding: 20px; border-left: none; border-top: 4px solid var(--accent); border-radius: 8px; }
+            .slide-container { width: 100%; min-height: 380px; }
+            
+            /* Move slider buttons to the bottom center */
+            .slider-btn { position: absolute; bottom: -10px; width: 40px; height: 40px; font-size: 1.2rem; z-index: 10; }
+            .slider-btn:first-child { left: 35%; }
+            .slider-btn:last-child { right: 35%; }
+
+            /* Adjust Container padding */
+            .container { margin: 30px auto; }
+            .section-title { font-size: 1.6rem; margin-top: 40px; }
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            border-radius: 4px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <video autoplay loop muted playsinline class="video-bg">
+        <source src="background.mp4" type="video/mp4">
+    </video>
+    
+    <div class="video-overlay"></div>
+
+    <nav>
+        <div class="nav-container">
+            <img src="mylogo.png" alt="Govind Engineer Logo" class="nav-logo">
+            <div class="nav-links">
+                <a href="https://github.com/goviinddd/">GitHub</a>
+                <a href="https://www.linkedin.com/in/govind-krishna-c/">LinkedIn</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero-container">
+            <img src="Govind.png" alt="Govind Krishna C" class="hero-img">
+            
+            <div class="hero-content">
+                <h1>Govind Krishna C</h1>
+                <h2 class="highlight">Android Developer Lead @ ATBots | Robotics & Automation Engineering Student</h2>
+                
+                <p class="bio">Innovative Robotics and Automation student with a strong foundation in machine learning, system integration, and physics-based simulation. Seeking to leverage my expertise across full-stack mechatronic pipelines, backend server architectures, and post-training AI quantization to advance deployment optimization on the edge.</p>
+                
+                <div class="academic-info">
+                    <p><strong>Education:</strong> B.Tech in Robotics and Automation</p>
+                    <p><strong>Institution:</strong> Saintgits College of Engineering (Autonomous), Kerala, India</p>
+                    <p><strong>Status:</strong> Current Semester: 7 | <strong>CGPA:</strong> 9.05/10.0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">ROS2</span>
+                <span class="skill-tag">OpenCV</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">NVIDIA Jetson</span>
+                <span class="skill-tag">Samsung NPU</span>
+                <span class="skill-tag">ESP32</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">ROS2</span>
+                <span class="skill-tag">Isaac Sim</span>
+                <span class="skill-tag">OpenCV</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">NVIDIA Jetson</span>
+                <span class="skill-tag">Samsung NPU</span>
+                <span class="skill-tag">ESP32</span>
+            </div>
+        </div>
+
+        <h2 class="section-title">Personal Projects</h2>
+        <div class="carousel">
+            <div class="carousel-card">
+                <h3>1. EduBot: Interactive Educational Robot</h3>
+                <p>Engineered a socially interactive humanoid robot deployed on a Raspberry Pi 5, integrating full-stack LLM/STT/TTS APIs and AWS Rekognition vision pipelines.</p>
+            </div>
+            
+            <div class="carousel-card">
+                <h3>2. Multimodal AI Teaching Assistant</h3>
+                <p>Developed an offline learning assistant utilizing Intel’s OpenVINO toolkit to heavily optimize PyTorch models for low-latency edge execution.</p>
+            </div>
+            
+            <div class="carousel-card">
+                <h3>3. Document Parser Pipeline</h3>
+                <p>Designed a production-grade document reconciliation engine using custom YOLO models and asynchronous LLM validation.</p>
+            </div>
+            
+            <div class="carousel-card">
+                <h3>4. Cloud-to-Mobile Real-Time Hazard Alert Platform</h3>
+                <p>Built a client-server Android app using Firebase and OpenStreetMap to crowdsource, verify (via YOLO), and dispatch real-time hazard alerts.</p>
+            </div>
+            
+            <div class="carousel-card">
+                <h3>5. Edge AI Autonomous Mobile Navigation</h3>
+                <p>Managed continuous spatial data streams across a smartphone's CPU, GPU, and NPU to execute autonomous lane-following without thermal throttling.</p>
+            </div>
+        </div>
+        <div class="btn-container">
+            <a href="projects.html" class="btn">View Full Project Details</a>
+        </div>
+
+        <h2 class="section-title">Professional Experience</h2>
+        
+        <div class="experience-slider-wrapper">
+            <button class="slider-btn" onclick="prevSlide()">&#10094;</button>
+            
+            <div class="slide-container">
+                <div class="slide active">
+                    <div class="experience-card">
+                        <h3>Android Developer Lead & System Integration Lead</h3>
+                        <span class="company">ATBots</span>
+                        <ul>
+                            <li>Leading the creation, integration, and deployment of production-grade full-stack AI architectures.</li>
+                            <li>Bridging the gap between low-level hardware sensors and high-level Android/cloud software platforms.</li>
+                            <li>Deploying edge AI systems (TTS, LLM, STT) onto resource-constrained hardware like NVIDIA Orin Nano.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="experience-card">
+                        <h3>Python / ML Intern</h3>
+                        <span class="company">Innovizsta Technologies</span>
+                        <ul>
+                            <li>Assisted in the debugging and optimization of various product-scale Python applications.</li>
+                            <li>Converted and integrated AI models like YOLOv8n and MiDas2 to run efficiently on Android phones using the NPU.</li>
+                            <li>Trained Reinforcement Learning (RL) models for efficient lane following using NVIDIA Isaac Sim.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="experience-card">
+                        <h3>Program Intern</h3>
+                        <span class="company">Intel Unnati Industrial Training</span>
+                        <ul>
+                            <li>Developed an AI-powered interactive learning assistant in October 2025 in collaboration with EdGate Technologies.</li>
+                            <li>Developed an interactive, multimodal, offline learning assistant for classrooms that integrates text, voice, and document compatibility.</li>
+                            <li>Utilized Intel’s OpenVINO library to optimize the model for high performance on low-end systems.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="experience-card">
+                        <h3>IoT Systems Intern</h3>
+                        <span class="company">ICCC Saintgits (Taiwan-India Smart Cities)</span>
+                        <ul>
+                            <li>Collaborated on the development of an IoT pipeline for communication between sensor nodes placed around the campus.</li>
+                            <li>Developed an online web dashboard to visualize real-time data from the campus monitoring nodes.</li>
+                            <li>Between August and September 2025, programmed the pipeline to send sensor data from a .json file to an SQL database for live dashboard display.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="slider-btn" onclick="nextSlide()">&#10095;</button>
+        </div>
+
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card" onclick="openModal('assets/images/harvard.png')">
+                <h4>Aspire Leader's Program</h4>
+                <span>Harvard University</span>
+            </div>
+            <div class="cert-card" onclick="openModal('assets/images/BAA.pdf')">
+                <h4>Basic and Advanced Concepts of Robotics</h4>
+                <span>NPTEL</span>
+            </div>
+            <div class="cert-card" onclick="openModal('assets/images/1748696354581.pdf')">
+                <h4>OOP Using UML, Java and Patterns</h4>
+                <span>NPTEL</span>
+            </div>
+            <div class="cert-card" onclick="openModal('assets/images/1748696844468.pdf')">
+                <h4>Robotics & Industrial Automation</h4>
+                <span>Coursera</span>
+            </div>
+            <div class="cert-card" onclick="openModal('assets/images/java.pdf')">
+                <h4>Programming in Java</h4>
+                <span>NPTEL</span>
+            </div>
+            <div class="cert-card" onclick="openModal('assets/images/1748695802507.jpg')">
+                <h4>Fundamentals of Python Programming</h4>
+                <span>Saintgits</span>
+            </div>
+        </div>
+    <div class="modal-overlay" id="certModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeModal(event)">&times;</button>
+            <iframe id="certIframe" class="modal-iframe" src="" style="display: none;"></iframe>
+            <img id="certImage" class="modal-image" src="" style="display: none;" alt="Certificate">
+        </div>
+    </div>
+
+    <script>
+        // --- 1. Experience Slider Logic ---
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+
+        // --- 2. Certificate Modal Logic ---
+        function openModal(filePath) {
+            const modal = document.getElementById('certModal');
+            const iframe = document.getElementById('certIframe');
+            const img = document.getElementById('certImage');
+            
+            if (modal) {
+                // Check if the file is an image (.png, .jpg, .jpeg)
+                if (filePath.match(/\.(jpeg|jpg|gif|png)$/i)) {
+                    iframe.style.display = 'none'; // Hide iframe
+                    img.style.display = 'block';   // Show image
+                    img.src = filePath;
+                } else {
+                    // Otherwise, treat as a PDF
+                    img.style.display = 'none';    // Hide image
+                    iframe.style.display = 'block';// Show iframe
+                    iframe.src = filePath;
+                }
+                
+                modal.style.display = 'flex'; 
+                
+                setTimeout(() => {
+                    modal.classList.add('active');
+                }, 10);
+            }
+        }
+
+        function closeModal(event) {
+            if (event) event.preventDefault();
+            const modal = document.getElementById('certModal');
+            const iframe = document.getElementById('certIframe');
+            const img = document.getElementById('certImage');
+            
+            if (modal) {
+                modal.classList.remove('active'); 
+                
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    if (iframe) iframe.src = ''; 
+                    if (img) img.src = '';
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>
